@@ -4,106 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIプログラミング仲間募集中</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2E8B57; /* SeaGreen */
+            --secondary-color: #3CB371; /* MediumSeaGreen */
+            --text-light: #f8f9fa;
+            --text-dark: #343a40;
+            --bg-light: #fdfdfd;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
-            background-color: #f0f5f0; /* 薄い緑色の背景 */
-            color: #333;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
         }
+
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
+
         header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 60px 20px;
-            background-color: #2E8B57; /* SeaGreen */
-            color: #ecf0f1;
+            height: 100vh;
+            color: var(--text-light);
+            background: linear-gradient(45deg, rgba(46, 139, 87, 0.9), rgba(60, 179, 113, 0.85)), url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23ffffff" fill-opacity="0.05"><rect x="50" width="50" height="50"/><rect y="50" width="50" height="50"/></g></svg>');
+            background-size: auto, 200px 200px;
+            position: relative;
         }
+
         header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4.5em;
+            font-weight: 600;
             margin: 0;
-            font-size: 2.8em;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
         }
+
         header p {
-            font-size: 1.2em;
-            opacity: 0.9;
+            font-size: 1.4em;
+            max-width: 600px;
+            margin-top: 20px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
+
         .section {
             background-color: #fff;
-            margin: 20px 0;
-            padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin: 40px auto;
+            padding: 60px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
         .section h2 {
+            font-family: 'Poppins', sans-serif;
             text-align: center;
             margin-top: 0;
-            color: #3CB371; /* MediumSeaGreen */
-            font-size: 2em;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-size: 2.8em;
         }
+
         .features-list {
             list-style: none;
             padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
+
         .features-list li {
-            background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%233CB371"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>') no-repeat left center;
-            background-size: 24px;
-            padding-left: 35px;
-            margin-bottom: 15px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid var(--secondary-color);
             font-size: 1.1em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+        
+        .features-list li:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+        }
+
         .cta-section {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
+            background: none;
         }
+
         .cta-button {
             display: inline-block;
-            background-color: #28a745; /* 明るい緑 */
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             color: #fff;
-            padding: 15px 30px;
+            padding: 20px 45px;
             text-decoration: none;
-            font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: background-color 0.3s, transform 0.3s;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4);
+            transition: all 0.3s ease;
         }
+
         .cta-button:hover {
-            background-color: #218838; /* 少し濃い緑 */
-            transform: scale(1.05);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(46, 139, 87, 0.6);
         }
+
         .profile-section {
             text-align: center;
         }
+
         .profile-image {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
+            border: 6px solid #fff;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
+
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
             margin-top: 40px;
-            font-size: 0.9em;
-            color: #777;
+            background-color: #e9ecef;
+            font-size: 1em;
+            color: #6c757d;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <h1>AIでプログラミングを身近に</h1>
-            <p>初心者から実践者まで、誰もが学び合えるコミュニティで、AI開発のスキルを加速させよう。</p>
-        </div>
+        <h1>AIでプログラミングを身近に</h1>
+        <p>初心者から実践者まで、誰もが学び合えるコミュニティで、AI開発のスキルを加速させよう。</p>
     </header>
 
-    <div class="container">
+    <main class="container">
         <section class="section">
             <h2>私たちのコミュニティについて</h2>
             <p>
@@ -119,6 +179,7 @@
                 <li>仲間とチームを組んで開発プロジェクトに挑戦</li>
                 <li>定期的なオンライン勉強会やもくもく会への参加</li>
                 <li>学習の進捗を共有してモチベーションを維持</li>
+                <li>ポートフォリオ制作のサポート</li>
             </ul>
         </section>
 
@@ -132,9 +193,9 @@
             <h2>運営者プロフィール</h2>
             <img src="nyanco.jpg" alt="プロフィール画像" class="profile-image">
             <p><strong>名前:</strong> yu-be</p>
-            <p>AIとプログラミングが大好きな猫。このコミュニティを通じて、皆さんと一緒に学ぶことを楽しみにしています。</p>
+            <p>AIとプログラミングが大好きなエンジニア。このコミュニティを通じて、皆さんと一緒に学ぶことを楽しみにしています。</p>
         </section>
-    </div>
+    </main>
 
     <footer>
         <p>&copy; 2025 AI Programming Community. All Rights Reserved.</p>
